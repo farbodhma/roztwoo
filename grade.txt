@@ -1,4 +1,6 @@
-Thu Jun  1 07:05:58 UTC 2023
-Test 'predictor' failed for src file 'predictor.v'
-src file 'predictor.v': 0/1 tests passed
-
+Thu Jun  1 07:32:16 UTC 2023
+predictor.v:13: syntax error
+predictor.v:17: Syntax in assignment statement l-value.
+predictor.v:24: syntax error
+I give up.
+An error occurred when opening .vcd file '.tmp.vcd'

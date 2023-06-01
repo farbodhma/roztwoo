@@ -9,7 +9,7 @@ module predictor(input wire request, result, clk, taken, output reg prediction);
       else begin 
         prediction = 1;
       end
-    
+    end
     else
       begin
         if(result)begin

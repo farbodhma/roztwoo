@@ -1,22 +1,27 @@
-module predictor(
-  input wire request,  // Prediction request
-  input wire result,   // Result to predict
-  input wire clk,      // Clock
-  input wire taken,    // Whether the previous result was taken or not
-  output reg prediction // Predicted result
-);
+module predictor(input wire request, result, clk, taken, output reg prediction);
 
-  reg prev_taken;      // Previous result
-
+  reg [1:0] str_conter = 2'd3;
   always @(posedge clk) begin
-    if (request) begin
-      if (prev_taken) begin
-        prediction <= 1; // Predict taken
-      end else begin
-        prediction <= 0; // Predict not taken
+    if (request)begin
+      if (str_conter <2'd2)begin
+        prediction = 0;
       end
-      prev_taken <= taken; // Store the current result
+      else begin 
+        prediction = 1;
+      end
+    
+    else
+      begin
+        if(result)begin
+          if(taken && str_conter < 2'd3)begin
+            str_conter <=str_conter +1;
+          end
+          else if(str_conter != 2'd0 && !taken)
+            begin
+              str_conter <=str_conter -1;
+            end
+        end
+      end
     end
-  end
 
 endmodule
